@@ -96,7 +96,7 @@ export function App() {
             <Dialog.Trigger asChild>
               <Button variant="primary">
                 <Plus className="size-3" />
-                Cadastre-se
+                Cadastro de Créditos
               </Button>
             </Dialog.Trigger>
 
@@ -109,7 +109,7 @@ export function App() {
                   </Dialog.Title>
                   
                   <Dialog.Description className="text-sm text-zinc-500">
-                    Adicione a quantidade de Créditos aqui.
+                    Adicione a quantidade de créditos aqui.
                   </Dialog.Description>
                 </div>
 
