@@ -7,8 +7,9 @@ import * as Dialog from '@radix-ui/react-dialog'
 import { useMutation, useQueryClient, } from '@tanstack/react-query'
 
 const createTagSchema = z.object({
-  fullName: z.string().min(3, { message: 'Precisa preencher o campo!' }),
+  fullName: z.string().min(3, { message: 'Preencha o nome completo!' }),
   amountToDeposit: z.number() .min(3, { message: 'Precisa preencher o campo!' }),
+  date: z.string().min(1, {message: 'Precisa preencher a data!'})
 })
 
 
@@ -69,7 +70,7 @@ export function CreateTagForm() {
   //   await mutateAsync({ fullName })
   // }
 
-  const createTag: SubmitHandler < CreateTagSchema > = data => { 
+  const onSubmit: SubmitHandler < CreateTagSchema > = data => { 
     const currentDate = new Date()
     console.log(data,currentDate)
   }
@@ -77,7 +78,7 @@ export function CreateTagForm() {
 
   return (
     // <form onSubmit={handleSubmit(createTag)} className="w-full space-y-6">
-    <form onSubmit={handleSubmit(createTag)} className="w-full space-y-6">
+    <form onSubmit={handleSubmit(onSubmit)} className="w-full space-y-6">
       <div className="space-y-2">
         <label className="text-sm font-medium block" htmlFor="fullName">Nome completo</label>
         <input 
@@ -91,20 +92,20 @@ export function CreateTagForm() {
         )}
       </div>
 
-      {/* <div className="space-y-2">
-        <label className="text-sm font-medium block" htmlFor="slug">Data</label>
+      <div className="space-y-2">
+        <label className="text-sm font-medium block" htmlFor="date">Data</label>
         <input
-        {...register('title')}
-          id="slug" 
+        {...register('date')}
+          id="date" 
           type="date"
           // readOnly 
           // value={slug}
           className="border border-zinc-800 rounded-lg px-3 py-2 bg-zinc-800/50 w-full text-sm"
         />
-        {formState.errors?.title && (
-          <p className="text-sm text-red-400">{formState.errors.title.message}</p>
+        {formState.errors?.date && (
+          <p className="text-sm text-red-400">{formState.errors.date.message}</p>
           )}
-      </div> */}
+      </div>
 
       <div className="space-y-2">
         <label className="text-sm font-medium block" htmlFor="amountToDeposit">Valor a depositar</label>
